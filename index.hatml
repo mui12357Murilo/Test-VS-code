@@ -3,36 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CyberCafé | Café & Tecnologia</title>
+    <title>NeonLounge | Co-working & Gaming</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
         }
 
         body {
-            background-color: #0f172a;
-            color: #f8fafc;
-            line-height: 1.6;
+            background-color: #0b0f19;
+            color: #f1f5f9;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 8%;
-            background: rgba(15, 23, 42, 0.9);
+            padding: 1.2rem 8%;
+            background-color: rgba(15, 23, 42, 0.8);
             border-bottom: 1px solid #1e293b;
             position: sticky;
             top: 0;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
+            z-index: 100;
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
+            font-size: 1.4rem;
+            font-weight: 700;
             color: #38bdf8;
             text-decoration: none;
         }
@@ -40,8 +43,8 @@
         nav a {
             color: #94a3b8;
             text-decoration: none;
-            margin-left: 20px;
-            transition: color 0.3s;
+            margin-left: 1.5rem;
+            transition: color 0.2s;
         }
 
         nav a:hover {
@@ -49,149 +52,172 @@
         }
 
         .hero {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
             text-align: center;
-            padding: 100px 20px;
-            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+            padding: 5rem 1rem;
+            background: radial-gradient(circle at top, #1e1b4b 0%, #0b0f19 70%);
         }
 
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            color: #f8fafc;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
         }
 
-        .hero span {
-            color: #38bdf8;
+        .hero h1 span {
+            color: #818cf8;
         }
 
         .hero p {
-            max-width: 600px;
             color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto 2rem;
             font-size: 1.1rem;
-            margin-bottom: 30px;
         }
 
         .btn {
-            background-color: #38bdf8;
-            color: #0f172a;
-            padding: 12px 30px;
-            border-radius: 25px;
+            background-color: #6366f1;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
             text-decoration: none;
-            font-weight: bold;
-            transition: transform 0.2s, background-color 0.3s;
+            transition: transform 0.2s, background 0.2s;
+            display: inline-block;
         }
 
         .btn:hover {
-            background-color: #7dd3fc;
+            background-color: #4f46e5;
             transform: translateY(-2px);
         }
 
-        .menu-section {
-            padding: 60px 8%;
-        }
-
-        .menu-section h2 {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 40px;
-            color: #f8fafc;
-        }
-
-        .grid {
+        .cards-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            padding: 3rem 8%;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
         }
 
         .card {
-            background-color: #1e293b;
-            padding: 25px;
+            background: #151c2c;
+            border: 1px solid #1e293b;
+            padding: 1.5rem;
             border-radius: 12px;
-            border: 1px solid #334155;
-            transition: transform 0.3s, border-color 0.3s;
+            transition: transform 0.2s, border-color 0.2s;
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            border-color: #38bdf8;
+            transform: translateY(-4px);
+            border-color: #6366f1;
         }
 
         .card h3 {
-            color: #38bdf8;
-            margin-bottom: 10px;
+            color: #818cf8;
+            margin-bottom: 0.5rem;
         }
 
         .card p {
             color: #94a3b8;
             font-size: 0.95rem;
-            margin-bottom: 15px;
+            margin-bottom: 1.5rem;
         }
 
-        .price {
-            font-weight: bold;
-            color: #f8fafc;
+        .card-btn {
+            background: transparent;
+            border: 1px solid #6366f1;
+            color: #818cf8;
+            padding: 0.6rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .card-btn:hover {
+            background: #6366f1;
+            color: white;
         }
 
         footer {
+            margin-top: auto;
             text-align: center;
-            padding: 30px;
+            padding: 1.5rem;
             border-top: 1px solid #1e293b;
             color: #64748b;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+        }
+
+        #toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #10b981;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            display: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 1000;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <a href="#" class="logo">⚡ CyberCafé</a>
+        <a href="#" class="logo">⚡ NeonLounge</a>
         <nav>
-            <a href="#inicio">Início</a>
-            <a href="#menu">Cardápio</a>
+            <a href="#espacos">Espaços</a>
             <a href="#contato">Contato</a>
         </nav>
     </header>
 
     <main>
-        <section id="inicio" class="hero">
-            <h1>O café do futuro, <span>hoje</span>.</h1>
-            <p>Combinações de grãos especiais, ambiente climatizado com Wi-Fi ultrarrápido e estações de trabalho para desenvolvedores e criadores.</p>
-            <a href="#menu" class="btn">Ver Cardápio</a>
+        <section class="hero">
+            <h1>Seu espaço de <span>Criação & Gaming</span></h1>
+            <p>Estações de trabalho equipadas, café especial ilimitado e conexão ultra rápida em um só lugar.</p>
+            <a href="#espacos" class="btn">Explorar Espaços</a>
         </section>
 
-        <section id="menu" class="menu-section">
-            <h2>Especiais do Dia</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>Espresso 404</h3>
-                    <p>Shot duplo de arábica para quando seu código não compila de primeira.</p>
-                    <span class="price">R$ 9,00</span>
-                </div>
-                <div class="card">
-                    <h3>Latte Algoritmo</h3>
-                    <p>Café cremoso com leite vaporizado e toque de baunilha artesanal.</p>
-                    <span class="price">R$ 14,00</span>
-                </div>
-                <div class="card">
-                    <h3>Cold Brew Cyber</h3>
-                    <p>Extraído a frio por 18 horas, leve, refrescante e ultra cafeinado.</p>
-                    <span class="price">R$ 16,00</span>
-                </div>
+        <section id="espacos" class="cards-container">
+            <div class="card">
+                <h3>💻 Dev Station</h3>
+                <p>Monitores ultrawide, cadeiras ergonômicas e internet fibra dedicada.</p>
+                <button class="card-btn" onclick="agendar('Dev Station')">Reservar Espaço</button>
+            </div>
+            <div class="card">
+                <h3>🎮 Gaming Arena</h3>
+                <p>PCs de alta performance para campeonatos ou partidas casuais.</p>
+                <button class="card-btn" onclick="agendar('Gaming Arena')">Reservar Espaço</button>
+            </div>
+            <div class="card">
+                <h3>🎙️ Pod Studio</h3>
+                <p>Sala com isolamento acústico e microfones profissionais para gravações.</p>
+                <button class="card-btn" onclick="agendar('Pod Studio')">Reservar Espaço</button>
             </div>
         </section>
     </main>
 
+    <div id="toast"></div>
+
     <footer id="contato">
-        <p>&copy; 2026 CyberCafé Neon. Todos os direitos reservados.</p>
+        <p>&copy; 2026 NeonLounge. Todos os direitos reservados.</p>
     </footer>
 
-</body>
-</html>
-<!-- Conexão com o script JavaScript -->
-    <script src="script.js" defer></script>
+    <script>
+        function agendar(espaco) {
+            const toast = document.getElementById('toast');
+            toast.textContent = `✅ ${espaco} selecionado com sucesso!`;
+            toast.style.display = 'block';
+            
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3000);
+        }
+    </script>
 </body>
 </html>
